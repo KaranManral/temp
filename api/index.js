@@ -6,6 +6,7 @@ const proxyChain = require("proxy-chain");
 const express = require('express');
 const path = require('path');
 const { connectClient,getTrends,addData,closeConnection } = require('../js/mongoDB');
+const serverless = require('serverless-http');
 
 const app = express();
 
@@ -129,4 +130,4 @@ app.on("close", async () => {
     await closeConnection();
 });
 
-module.exports=app;
+module.exports.handler = serverless(app);
