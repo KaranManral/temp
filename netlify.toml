@@ -1,5 +1,7 @@
 [build]
+  publish = "public"
   functions = "api"
 
 [dev]
-  functions = "functions"
+  publish = "public"
+  functions = "api"
