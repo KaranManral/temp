@@ -1,0 +1,37 @@
+{
+  "name": "selenium-assignment",
+  "version": "1.0.0",
+  "description": "Fetch Twitter's what's goin on?",
+  "main": "index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "start1": "chromedriver --whitelisted-ips=\"0.0.0.0\"",
+    "start2": "node index.js",
+    "build": "npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaranManral/selenium-assignment.git"
+  },
+  "author": "Karan Singh Manral",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaranManral/selenium-assignment/issues"
+  },
+  "homepage": "https://github.com/KaranManral/selenium-assignment#readme",
+  "dependencies": {
+    "chromedriver": "^125.0.3",
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.7.0",
+    "netlify-lambda": "^2.0.16",
+    "path": "^0.12.7",
+    "proxy-chain": "^2.4.0",
+    "selenium-webdriver": "^4.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2"
+  }
+}

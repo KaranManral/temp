@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function fetchData(){
+            document.getElementById("btn").style.display = "none";
+            document.getElementById("btnLbl").innerText = "It will hardly take 2-5 minutes depending on proxy";
+            let trends = document.getElementById("trends");
+            trends.innerHTML = "";
+            let res = await fetch("/get-data");
+            let data = await res.json();
+            if(data&&data._id){
+                let p = document.createElement("p");
+                p.innerText=`These are the most happening topics as on ${data.date} ${data.time}`;
+                let br = document.createElement("br");
+                let ul = document.createElement("ul");
+                for(let i=0;i<5;i++){
+                    let li = document.createElement("li");
+                    li.innerText = data.trends[i];
+                    ul.appendChild(li);
+                }
+                let p2 = document.createElement("p");
+                p2.innerText=`The IP address used for this query was ${data.ip_addr}`;
+                
+                let p3 = document.createElement("p");
+                p3.innerText=`Here's a JSON extract of this record from MongoDB`;
+
+                let p4 = document.createElement("p");
+                p4.innerText = JSON.stringify(data,null,2);
+
+                trends.appendChild(p);
+                trends.appendChild(ul);
+                trends.appendChild(br);
+                trends.appendChild(p2);
+                trends.appendChild(br);
+                trends.appendChild(p3);
+                trends.appendChild(p4);           
+            }
+            document.getElementById("btnLbl").innerText = "Run the script again";
+            document.getElementById("btn").style.display="block";
+            
+        }
+    </script>
+    <section id="trends">
+
+    </section>
+    <label for="btn" id="btnLbl">Run the script</label>
+    <button type="button" id="btn" name="btn" role="button" style="padding: 1rem;border:1px solid #00ab00;color: white;background-color: #00ab00;border-radius: 6px;cursor: pointer;" onmouseenter="document.getElementById('btn').style.backgroundColor='#0eff0e'" onmouseleave="document.getElementById('btn').style.backgroundColor='#00ab00'" onclick="fetchData()">Click Me</button>
+</body>
+</html>
