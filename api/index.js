@@ -122,9 +122,6 @@ app.get("/get-data",async (req,res)=>{
     res.send(data);
 });
 
-app.listen(3000,()=>{
-    console.log("App is listening on 3000");
-});
 
 app.on("close", async () => {
     await closeConnection();
