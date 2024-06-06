@@ -12,7 +12,7 @@
             document.getElementById("btnLbl").innerText = "It will hardly take 2-5 minutes depending on proxy";
             let trends = document.getElementById("trends");
             trends.innerHTML = "";
-            let res = await fetch("/get-data");
+            let res = await fetch("/.netlify/functions/index/get-data");
             let data = await res.json();
             if(data&&data._id){
                 let p = document.createElement("p");
